@@ -5,6 +5,9 @@ using namespace std;
 int arr[10000000];
 int DP[10000000];
 
+// El menor número de saltos de hasta una posición, es el menor entre
+// el valor que tenía esa posición (00) y el minimo anterior + 1, por el salto
+
 int dp(int fin){
     if(arr[0] == 0) return -1;
     for(int i = 1; i <= fin; ++i){
