@@ -47,11 +47,67 @@ typedef map<int, string> mapis;
 #define read3(a, b, c) cin >> a >> b >> c
 #define read4(a, b, c, d) cin >> a >> b >> c >> d
 
+int DT[105];
+int DP[105][105];
 
+// index en el que se encuentra
+// Kilos que necesita
+// devuelve el precio minimo
+int dp(int index, int kilos)
+{
+	if (kilos == 0)
+		return 0;
+
+	if (kilos < 0 || index < 0)
+		return 999999999;
+	// Puede comprar index kilos por DT[index] precio, si se puede, o no y comprar del siguiente
+
+	if (DP[index][kilos] != -1)
+	{
+		return DP[index][kilos];
+	}
+	else
+	{
+		// Si no hay stock
+		if (DT[index] == -1)
+		{
+			return DP[index][kilos] = dp(index - 1, kilos);
+		}
+
+		// Tomar DT[index] kilos o no tomar
+		return DP[index][kilos] = min(DT[index] + dp(index, kilos - (index + 1)),
+									  dp(index - 1, kilos));
+	}
+}
 
 int main()
 {
-	
+	int test, frie, kilo, temp;
+
+	cin >> test;
+
+	forn(i, test)
+	{
+		memset(DP, -1, sizeof(DP));
+
+		cin >> frie >> kilo;
+
+		forn(j, kilo)
+		{
+			cin >> DT[j];
+		}
+
+		temp = dp(kilo - 1, kilo);
+
+		if (temp >= 999999)
+		{
+			cout << -1 << endl;
+		}
+		else
+		{
+			cout << temp << endl;
+		}
+	}
 
 	return 0;
 }

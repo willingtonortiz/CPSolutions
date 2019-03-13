@@ -47,11 +47,15 @@ typedef map<int, string> mapis;
 #define read3(a, b, c) cin >> a >> b >> c
 #define read4(a, b, c, d) cin >> a >> b >> c >> d
 
-
-
 int main()
 {
-	
+	long long temp;
+
+	while(true){
+		scanf("%lld", &temp);
+		if(temp == 42LL) break;
+		printf("%lld\n", temp);
+	}
 
 	return 0;
 }

@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
+ 
 // Types
 typedef unsigned long long ull;
 typedef long long ll;
@@ -30,11 +30,11 @@ typedef map<int, string> mapis;
 #define fornm(i, a, b) for (int i = a; i <= b; ++i)
 #define fornmr(i, a, b) for (int i = a; i >= b; --i)
 #define formap(it, map) for (auto it = map.begin(); it != map.end(); ++it)
-
+ 
 // Sort
 #define sortvec(vec) sort(vec.begin(), vec.end())
 #define sortrvec(vec) sort(vec.end(), vec.begin())
-
+ 
 // print
 #define print1(a) cout << a << endl
 #define print2(a, b) cout << a << " " << b << endl
@@ -46,12 +46,24 @@ typedef map<int, string> mapis;
 #define read2(a, b) cin >> a >> b
 #define read3(a, b, c) cin >> a >> b >> c
 #define read4(a, b, c, d) cin >> a >> b >> c >> d
-
-
-
+ 
 int main()
 {
-	
-
+	int cases;
+	string s;
+ 
+	cin >> cases;
+ 
+	for (int i = 0; i < cases; ++i)
+	{
+		cin >> s;
+		for (int j = 0; j < s.size() / 2; j += 2)
+		{
+			cout << s[j];
+		}
+		cout << endl;
+	}
+ 
 	return 0;
 }
+ 
