@@ -9,11 +9,9 @@ typedef long long ll;
 typedef vector<string> vecs;
 typedef vector<int> veci;
 typedef vector<veci> vecveci;
-typedef vector<bool> vecb;
 typedef pair<int, int> pairii;
 typedef pair<string, int> pairsi;
 typedef pair<int, string> pairis;
-typedef vector<pairii> vecpairii;
 // Stack
 typedef stack<int> stacki;
 typedef stack<char> stackc;
@@ -34,26 +32,43 @@ typedef map<int, string> mapis;
 
 // Sort
 #define sortvec(vec) sort(vec.begin(), vec.end())
+#define sortrvec(vec) sort(vec.end(), vec.begin())
 
 // print
-#define print1(a) printf("%d\n", a)
-#define print2(a, b) printf("%d %d\n", a, b)
-#define print3(a, b, c) printf("%d %d %d\n", a, b, c)
-#define print4(a, b, c, d) printf("%d %d %d %d\n", a, b, c, d)
-#define prints(a) printf("%d", a);
+#define print1(a) cout << a << endl
+#define print2(a, b) cout << a << " " << b << endl
+#define print3(a, b, c) cout << a << " " << b << " " << c << endl
+#define print4(a, b, c, d) cout << a << " " << b << " " << c << " " << d << endl
+#define prints(a) cout << a << " "
 // read
-#define read1(a) scanf("%d", &a)
-#define read2(a, b) scanf("%d%d", &a, &b)
-#define read3(a, b, c) scanf("%d%d%d", &a, &b, &c)
-#define read4(a, b, c, d) scanf("%d%d%d%d", &a, &b, &c, &d)
-#define INF 999999999
+#define read1(a) cin >> a
+#define read2(a, b) cin >> a >> b
+#define read3(a, b, c) cin >> a >> b >> c
+#define read4(a, b, c, d) cin >> a >> b >> c >> d
 
+int main()
+{
+    int test, size, a, b;
+    long long unhappy;
+    read1(test);
 
-int main(){
+    forn(i, test){
+        read1(size);
+        unhappy = 0;
 
+        veci happy(size);
 
+        forn(j, size){
+            read2(a, b);
 
+            happy[j] = a + b;
+            unhappy += b;
+        }
 
+        sortvec(happy);
+
+        print1(happy[size - 1] + happy[size - 2] - unhappy);
+    }
 
 
 

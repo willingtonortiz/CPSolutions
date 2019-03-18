@@ -25,12 +25,13 @@ typedef set<string> sets;
 typedef map<int, int> mapii;
 typedef map<string, int> mapsi;
 typedef map<int, string> mapis;
-//For
-#define forn(i, n) for (int i = 0; i < n; ++i)
-#define fornr(i, n) for (int i = n; i >= 0; --i)
-#define fornm(i, a, b) for (int i = a; i <= b; ++i)
-#define fornmr(i, a, b) for (int i = a; i >= b; --i)
-#define formap(it, map) for (auto it = map.begin(); it != map.end(); ++it)
+
+// For
+#define forn(i, n) for(int i = 0; i < n; ++i)
+#define fornr(i, n) for(int i = n - 1; i >= 0; --i)
+#define fornm(i, a, b) for(int i = a; i <= b; ++i)
+#define fornmr(i, a, b) for(int i = a; i >= b; --i)
+#define formap(it, map) for(auto it = map.begin(); it != map.end(); ++it)
 
 // Sort
 #define sortvec(vec) sort(vec.begin(), vec.end())
@@ -50,12 +51,47 @@ typedef map<int, string> mapis;
 
 
 int main(){
+	int test, len, size, temp;
+	string s;
+
+	read1(test);
 
 
+	forn(i, test){
+		read2(len, size);
 
+		vector<pair<int, string>> data(size);
 
+		forn(j, size){
+			cin >> s;
+			temp = 0;
 
+			map<char, int> coun;
 
+			for(int k = s.size() - 1; k >= 0; --k){
+
+				formap(it, coun){
+					if(s[k] > (*it).first){
+						temp += (*it).second;
+					}
+				}
+
+				coun[s[k]]++;
+			}
+
+			data[j] = make_pair(temp, s);
+		}
+
+		stable_sort(data.begin(), data.end(), [](pair<int, string> a, pair<int, string> b){
+			return a.first < b.first;
+		});
+
+		forn(j, size){
+			cout << data[j].second << "\n";
+		}
+
+		if(i + 1 != test) cout << "\n";
+	}
 
 	return 0;
 }

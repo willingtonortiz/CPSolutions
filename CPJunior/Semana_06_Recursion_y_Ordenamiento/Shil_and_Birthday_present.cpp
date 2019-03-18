@@ -50,12 +50,37 @@ typedef map<int, string> mapis;
 
 
 int main(){
+	int size, temp, cur;
+	long long resp;
 
+	read1(size);
 
+	veci data(size);
+	// seti data;
 
+	forn(i, size){
+		// read1(&data[i]);
+		scanf("%d", &data[i]);
+		// data.insert(temp);
+	}
 
+	sortvec(data);
 
+	cur = 0;
+	resp = 0LL;
 
+	forn(i, size){
+		if(cur < data[i]){
+			resp++;
+			cur = data[i];
+		}
+	}
+
+	// resp = data.size();
+
+	resp = (resp * (resp - 1)) / 2LL;
+
+	printf("%lld", resp);
 
 	return 0;
 }
